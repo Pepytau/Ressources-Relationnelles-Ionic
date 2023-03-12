@@ -12,4 +12,11 @@ export class MenuPage implements OnInit {
   ngOnInit() {
   }
 
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
+
+  numbers = [0,1,2,3,4,5,6,7,8,9]
+
 }

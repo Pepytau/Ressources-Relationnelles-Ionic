@@ -2,8 +2,24 @@
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="menu">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
+      <ion-icon aria-hidden="true" name="home-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon aria-hidden="true" name="search-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button disabled="true"></ion-tab-button>
+    <ion-tab-button tab="discover">
+      <ion-icon aria-hidden="true" name="earth"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="profile">
+      <ion-icon aria-hidden="true" name="person-circle-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
 
 </ion-tabs>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button redo="menu" [routerLink]="['/tabs/create']">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
