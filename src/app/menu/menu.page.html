@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content>
-<h1>Bonjour **</h1>
+<h1>Bonjour {{ user.alias }}</h1>
 <h2>Vos ressources recommandées</h2>
-<ion-slides pager="true" [options]="slideOpts">
-  <ion-slide *ngFor="let n of numbers">
+<swiper-container>
+  <swiper-slide *ngFor="let n of numbers">
     <ion-card>
       <h1>Ressource {{ n }}</h1>
     </ion-card>
-  </ion-slide>
-</ion-slides>
+  </swiper-slide>
+</swiper-container>
 </ion-content>

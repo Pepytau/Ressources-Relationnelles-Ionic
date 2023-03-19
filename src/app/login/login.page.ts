@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -15,9 +17,14 @@ export class LoginPage implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private http: HttpClient, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private storage : Storage) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.get('user').then((myUser) => {
+      if (myUser != null) {
+        this.router.navigate(['/tabs/menu'])
+      }
+    });
   }
 
   onSubmit() {
@@ -30,7 +37,29 @@ export class LoginPage implements OnInit {
         'Accept':'application/json',
       })
     }
-    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login",formData,httpOptions).subscribe((response) => { console.log(response) })
+    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login",formData,httpOptions).subscribe((response : any) => { 
+      console.log(response[0]);
+          switch (response[0].code) {
+        case '0001':
+          let user = {
+            mail : response[0].mail,
+            alias : response[0].alias,
+            firstName : response[0].firstName,
+            lastName : response[0].lastName
+          }
+          this.storage.set('user', user);
+          this.router.navigate(['/tabs/menu'])
+            break;
+        case '0002': 
+            alert('Mot de passe incorrect.');
+            break;
+        case '0003': 
+            alert('Aucun utilisateur n\'est enregistré avec cet e-mail.');
+            break;
+        case '0005': 
+            alert('Une erreur s\'est produite, veuillez réessayer plus tard.');
+            break;
+        }
+     })
   }
-
 }

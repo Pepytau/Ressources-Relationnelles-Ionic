@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,13 +18,27 @@ export class RegisterPage implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-
+    let formData: FormData  = new FormData();
+    let myLogin: any = this.registerForm.value;
+    formData.append('mail',myLogin.mail);
+    formData.append('alias',myLogin.mail);
+    formData.append('firstName',myLogin.mail);
+    formData.append('lastName',myLogin.mail);
+    formData.append('password',myLogin.password );
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept':'application/json',
+      })
+    }
+    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Register",formData,httpOptions).subscribe((response : any) => { 
+      console.log(response);
+     })
   }
 
 }

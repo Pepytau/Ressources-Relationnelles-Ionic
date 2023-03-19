@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-menu',
@@ -7,15 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  user = {
+    mail : '',
+    firstName: '',
+    lastName: '',
+    alias: ''
   }
 
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400
-  };
+  constructor(private storage : Storage) { }
+
+  async ngOnInit() {
+
+  }
+
+  async ionViewDidEnter() {
+    await this.storage.get('user').then((myUser) => {
+      this.user = myUser;
+      console.log(myUser)
+      console.log(this.user)
+    });
+  }
 
   numbers = [0,1,2,3,4,5,6,7,8,9]
 
