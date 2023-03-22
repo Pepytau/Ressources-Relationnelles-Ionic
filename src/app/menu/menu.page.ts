@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu',
@@ -15,10 +16,15 @@ export class MenuPage implements OnInit {
     alias: ''
   }
 
-  constructor(private storage: Storage) { }
+  ressources = [];
+
+  constructor(private storage: Storage, private http: HttpClient) { }
 
   async ngOnInit() {
-
+    this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeader").subscribe((response: any) => {
+      this.ressources = response;
+      console.log(this.ressources);
+    })
   }
 
   async ionViewDidEnter() {
