@@ -10,7 +10,7 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage) { }
 
   ngOnInit() {
     this.storage.create();

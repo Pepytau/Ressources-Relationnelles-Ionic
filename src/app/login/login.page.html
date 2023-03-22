@@ -5,20 +5,20 @@
 </ion-header>
 
 <ion-content>
-<div id="container">
-  <h1>Connexion</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label for="mail" position="floating">Courriel</ion-label>
-      <ion-input type="email" placeholder="email@exemple.fr" formControlName="mail"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="password" position="floating">Mot de passe</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-    <ion-button shape="round" type="submit">Se connecter</ion-button>
-  </form>
-  <ion-button shape="round" [routerLink]="['/register']">S'enregistrer</ion-button>
-  <ion-button shape="round" [routerLink]="['/tabs']">Continuer en tant qu'invité</ion-button>
-</div>
+  <div id="container">
+    <h1>Connexion</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label for="mail" position="floating">Courriel</ion-label>
+        <ion-input type="email" placeholder="email@exemple.fr" formControlName="mail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label for="password" position="floating">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button shape="round" type="submit">Se connecter</ion-button>
+    </form>
+    <ion-button shape="round" [routerLink]="['/register']">S'enregistrer</ion-button>
+    <ion-button shape="round" [routerLink]="['/tabs']">Continuer en tant qu'invité</ion-button>
+  </div>
 </ion-content>

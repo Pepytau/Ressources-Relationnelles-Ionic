@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: () => import('./create/create.module').then( m => m.CreatePageModule)
+  },
+  {
+    path: 'ressource-details',
+    loadChildren: () => import('./ressource-details/ressource-details.module').then( m => m.RessourceDetailsPageModule)
   }
 ];
 @NgModule({
