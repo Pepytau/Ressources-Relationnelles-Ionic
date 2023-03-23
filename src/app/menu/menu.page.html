@@ -17,7 +17,7 @@
     </swiper-container>
     <h2>Vos ressources suivies</h2>
     <ion-content class="ion-padding">
-      <ion-card *ngFor="let ressource of ressources" class="ressourceCard">
+      <ion-card *ngFor="let ressource of ressources" class="ressourceCard" (click)="getRessourceDetail(ressource)">
         <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
         <ion-card-header>
           <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
