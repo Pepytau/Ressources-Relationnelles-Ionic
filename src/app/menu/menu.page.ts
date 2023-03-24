@@ -22,7 +22,7 @@ export class MenuPage implements OnInit {
   constructor(private storage: Storage, private http: HttpClient, private router: Router) { }
 
   async ngOnInit() {
-    this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeader").subscribe((response: any) => {
+    this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
       this.ressources = response;
       console.log(this.ressources);
     })
