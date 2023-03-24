@@ -38,7 +38,6 @@ export class LoginPage implements OnInit {
       })
     }
     this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
-      console.log(response[0]);
       switch (response[0].code) {
         case '0001':
           let user = {

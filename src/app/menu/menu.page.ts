@@ -24,7 +24,6 @@ export class MenuPage implements OnInit {
   async ngOnInit() {
     this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
       this.ressources = response;
-      console.log(this.ressources);
     })
   }
 
@@ -35,7 +34,6 @@ export class MenuPage implements OnInit {
   }
 
   getRessourceDetail(ressource: any) {
-    console.log(ressource['id']);
     this.router.navigate(['/ressource-details'], { queryParams: { 'id': ressource['id'] } })
   }
 

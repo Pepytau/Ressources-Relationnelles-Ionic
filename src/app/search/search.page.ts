@@ -21,14 +21,12 @@ export class SearchPage implements OnInit {
       let params = new HttpParams().set('search', searchText.detail.value);
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/searchRessource",
         { params: params }).subscribe((response: any) => {
-          console.log(response);
           this.ressources = response;
         })
     }
   }
 
   getRessourceDetail(ressource: any) {
-    console.log(ressource['id']);
     this.router.navigate(['/ressource-details'], { queryParams: { 'id': ressource['id'] } })
   }
 
