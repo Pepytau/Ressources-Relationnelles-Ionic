@@ -27,9 +27,9 @@ export class RegisterPage implements OnInit {
     let formData: FormData = new FormData();
     let myLogin: any = this.registerForm.value;
     formData.append('mail', myLogin.mail);
-    formData.append('alias', myLogin.mail);
-    formData.append('firstName', myLogin.mail);
-    formData.append('lastName', myLogin.mail);
+    formData.append('alias', myLogin.alias);
+    formData.append('firstName', myLogin.firstName);
+    formData.append('lastName', myLogin.lastName);
     formData.append('password', myLogin.password);
     const httpOptions = {
       headers: new HttpHeaders({

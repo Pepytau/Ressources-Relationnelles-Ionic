@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  user = {
+    mail: '',
+    firstName: '',
+    lastName: '',
+    alias: ''
   }
 
+  constructor(private storage: Storage, private router: Router) { }
+
+  ngOnInit() {
+    this.storage.get('user').then((myUser) => {
+      this.user = myUser;
+    });
+  }
+
+
+  disconnect() {
+    this.storage.clear();
+    this.router.navigate(['/login']);
+  }
 }

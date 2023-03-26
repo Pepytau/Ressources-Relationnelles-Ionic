@@ -9,4 +9,25 @@
   <h2>{{ ressource['type'] }}</h2>
   <h2>Créé par {{ ressource['createur'] }} le {{ ressource['dateCreation'] }}</h2>
   <p>{{ ressource['contenu'] }}</p>
+  <ion-button expand="block" (click)="setOpen(true)" id="commentBtn">
+    Commentaires
+    <ion-icon slot="end" name="chevron-up"></ion-icon>
+  </ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Commentaires</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Fermer</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+          Des commentaires
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
