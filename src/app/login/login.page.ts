@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
-
+//TODO login bcrypt
+//https://www.npmjs.com/package/bcryptjs
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginPage implements OnInit {
             lastName: response[0].lastName
           }
           this.storage.set('user', user);
-          this.router.navigate(['/tabs/menu'])
+          this.router.navigate(['/tabs/menu']);
           break;
         case '0002':
           alert('Mot de passe incorrect.');

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-profile',
@@ -18,19 +19,17 @@ export class ProfilePage implements OnInit {
     alias: ''
   }
 
-  constructor(private storage: Storage, private router: Router) { }
+  constructor(private storage: Storage, private router: Router, private http: HttpClient,) { }
 
   async ngOnInit() {
-    await this.storage.get('user').then((myUser) => {
-      if (myUser == null) {
-        this.router.navigate(['tabs/menu']);
-      }
-    });
+
   }
 
   disconnect() {
     this.storage.clear();
     this.router.navigate(['/login']);
   }
+
+
 }
 
