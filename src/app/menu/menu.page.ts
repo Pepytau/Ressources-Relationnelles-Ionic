@@ -16,16 +16,20 @@ export class MenuPage implements OnInit {
     lastName: '',
     alias: ''
   }
+  
+  constructor(private storage: Storage, private router: Router, private http: HttpClient) { }
 
   ressources = [];
 
-  constructor(private storage: Storage, private http: HttpClient, private router: Router) { }
-
   async ngOnInit() {
-    this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeader").subscribe((response: any) => {
+    await this.storage.get('user').then((myUser) => {
+      if (myUser == null) {
+        this.router.navigate(['/login']);
+      }
+      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeader").subscribe((response: any) => {
       this.ressources = response;
       console.log(this.ressources);
-    })
+    });
   }
 
   async ionViewDidEnter() {

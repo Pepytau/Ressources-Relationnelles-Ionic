@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private storage: Storage) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.get('user').then((myUser) => {
+      console.log(myUser);
+      if (myUser == null) {
+        this.router.navigate(['tabs/menu']);
+      }
+    });
   }
 
+  logout() {
+    this.storage.clear();
+    this.router.navigate(['/login']);
+  };
 }
+
