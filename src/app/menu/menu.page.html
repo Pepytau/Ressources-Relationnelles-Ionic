@@ -9,9 +9,14 @@
     <h1>Bonjour {{ user.alias }}</h1>
     <h2>Vos ressources recommandées</h2>
     <swiper-container>
-      <swiper-slide *ngFor="let n of numbers">
-        <ion-card>
-          <h1>Ressource {{ n }}</h1>
+      <swiper-slide *ngFor="let ressource of ressources">
+        <ion-card class="ressourceCardHorizontal" (click)="getRessourceDetail(ressource)">
+          <img alt="Silhouette of mountains" class="ressourceCardHorizontalImage"
+            src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <ion-card-header class="ressourceCardHorizontalHeader">
+            <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
+            <ion-card-subtitle>{{ ressource['type'] }}</ion-card-subtitle>
+          </ion-card-header>
         </ion-card>
       </swiper-slide>
     </swiper-container>

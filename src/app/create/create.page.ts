@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage-angular';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -24,7 +26,7 @@ export class CreatePage implements OnInit {
     alias: ''
   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private storage: Storage) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private storage: Storage, private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -35,17 +37,26 @@ export class CreatePage implements OnInit {
     this.storage.get('user').then((myUser) => {
       this.user = myUser;
       formData.append('title', myRessource.title);
-      formData.append('content', myRessource.content);
       formData.append('type', myRessource.type);
-      formData.append('image', myRessource.image);
+      formData.append('content', myRessource.content);
+      formData.append('imagePath', myRessource.image);
       formData.append('creator', this.user.alias);
       const httpOptions = {
         headers: new HttpHeaders({
           'Accept': 'application/json',
         })
       }
-      this.http.post("https://ezraspberryapi.ddns.net/api/v1/createRessource", formData, httpOptions).subscribe((response: any) => {
-        console.log(response);
+      this.http.post("https://ezraspberryapi.ddns.net/api/v1/createRessource", formData, httpOptions).subscribe(async (response: any) => {
+        if (response.code == "0001") {
+          const alert = await this.alertController.create({
+            header: 'Succès !',
+            message: 'Votre ressource a bien été créée avec succès !',
+            buttons: ['OK'],
+          });
+
+          await alert.present();
+          this.router.navigate(['/tabs/menu'])
+        }
       })
     });
   }

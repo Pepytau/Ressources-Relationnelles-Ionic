@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { clear } from 'console';
 
 @Component({
   selector: 'app-ressource-details',
@@ -13,12 +12,6 @@ export class RessourceDetailsPage implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ressource: any = {};
-
-  isModalOpen = false;
-
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
 
   ngOnInit() {
     let id: any;
