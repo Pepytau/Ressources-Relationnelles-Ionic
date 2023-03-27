@@ -5,5 +5,32 @@
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <h1>Créer une nouvelle ressource</h1>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label for="title" position="floating">Titre</ion-label>
+        <ion-input type="text" placeholder="Ma nouvelle ressource" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label for="type" position="floating">Type</ion-label>
+        <ion-select placeholder="Type" (ionChange)="typeChange($event)">
+          <ion-select-option value="activity">Activité</ion-select-option>
+          <ion-select-option value="video">Vidéo</ion-select-option>
+          <ion-select-option value="onlineGame">Jeu en ligne</ion-select-option>
+          <ion-select-option value="article">Article</ion-select-option>
+          <ion-select-option value="course">Cours</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label for="content" position="floating">Contenu</ion-label>
+        <ion-input type="text" placeholder="Mon contenu" formControlName="content"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label for="image" position="floating">Image</ion-label>
+        <ion-input type="text" formControlName="image"></ion-input>
+      </ion-item>
+      <ion-button shape="round" type="submit">Créer ma ressource</ion-button>
+    </form>
+  </div>
 </ion-content>

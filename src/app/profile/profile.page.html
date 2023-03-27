@@ -1,14 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Profile</ion-title>
+    <ion-title>Mon profil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <ion-button (click)="logout()">
-    Se déconnecter
-    <ion-icon name="log-out-outline"></ion-icon>
-  </ion-button>
-
+  <div id="container">
+    <img alt="Profile picture" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <h1>{{ user.alias }}</h1>
+    <ion-button shape="round" (click)="disconnect()">Se déconnecter</ion-button>
+  </div>
 </ion-content>

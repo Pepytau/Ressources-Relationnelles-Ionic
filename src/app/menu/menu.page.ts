@@ -28,9 +28,9 @@ export class MenuPage implements OnInit {
       }
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeader").subscribe((response: any) => {
       this.ressources = response;
-      console.log(this.ressources);
     });
-  }
+  });
+ }
 
   async ionViewDidEnter() {
     await this.storage.get('user').then((myUser) => {
@@ -39,7 +39,6 @@ export class MenuPage implements OnInit {
   }
 
   getRessourceDetail(ressource: any) {
-    console.log(ressource['id']);
     this.router.navigate(['/ressource-details'], { queryParams: { 'id': ressource['id'] } })
   }
 

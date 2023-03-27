@@ -11,20 +11,26 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private storage: Storage) { }
+  user = {
+    mail: '',
+    firstName: '',
+    lastName: '',
+    alias: ''
+  }
+
+  constructor(private storage: Storage, private router: Router) { }
 
   async ngOnInit() {
     await this.storage.get('user').then((myUser) => {
-      console.log(myUser);
       if (myUser == null) {
         this.router.navigate(['tabs/menu']);
       }
     });
   }
 
-  logout() {
+  disconnect() {
     this.storage.clear();
     this.router.navigate(['/login']);
-  };
+  }
 }
 
