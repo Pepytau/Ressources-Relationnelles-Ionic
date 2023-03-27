@@ -17,14 +17,19 @@ export class MenuPage implements OnInit {
     alias: ''
   }
 
+  constructor(private storage: Storage, private router: Router, private http: HttpClient) { }
+
   ressources = [];
 
-  constructor(private storage: Storage, private http: HttpClient, private router: Router) { }
-
   async ngOnInit() {
-    this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
-      this.ressources = response;
-    })
+    await this.storage.get('user').then((myUser) => {
+      if (myUser == null) {
+        this.router.navigate(['/login']);
+      }
+      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
+        this.ressources = response;
+      });
+    });
   }
 
   async ionViewDidEnter() {
