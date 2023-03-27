@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -15,10 +16,14 @@ export class MenuPage implements OnInit {
     alias: ''
   }
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private router: Router) { }
 
   async ngOnInit() {
-
+    await this.storage.get('user').then((myUser) => {
+      if (myUser == null) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   async ionViewDidEnter() {
