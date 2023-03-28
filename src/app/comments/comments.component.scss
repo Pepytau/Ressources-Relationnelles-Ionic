@@ -6,3 +6,14 @@
     --background: black;
     border-top: 1px solid grey;
 }
+
+#comment {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+ion-item {
+    --ion-item-background: transparent;
+    display: flex;
+    width: 90%;
+}

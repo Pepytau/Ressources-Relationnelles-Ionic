@@ -13,9 +13,17 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <p>
-        Des commentaires
-      </p>
+      <div id="comment" *ngFor="let comment of comments">
+        <p>{{ comment['idUser'] }}</p>
+        <p>{{ comment['dateCreation'] }}</p>
+        <p>{{ comment['contenu'] }}</p>
+      </div>
     </ion-content>
+    <ion-item>
+      <ion-input placeholder="Ajouter un commentaire" [(ngModel)]="commentContent" color="none"></ion-input>
+      <ion-button fill="clear" (click)="sendComment()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ng-template>
 </ion-modal>
