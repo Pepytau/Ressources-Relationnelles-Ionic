@@ -26,7 +26,7 @@ export class MenuPage implements OnInit {
       // if (myUser == null) {
       //   this.router.navigate(['/login']);
       // }
-      this.http.get("http://192.168.1.72/api/v1/getRessourcesHeaders").subscribe((response: any) => {
+      this.http.get("http://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
         this.ressources = response;
       });
     });
