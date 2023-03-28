@@ -1,0 +1,29 @@
+<ion-button expand="block" (click)="setOpen(true)" id="commentBtn">
+  Commentaires
+  <ion-icon slot="end" name="chevron-up"></ion-icon>
+</ion-button>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Commentaires</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Fermer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div id="comment" *ngFor="let comment of comments">
+        <p>{{ comment['idUser'] }}</p>
+        <p>{{ comment['dateCreation'] }}</p>
+        <p>{{ comment['contenu'] }}</p>
+      </div>
+    </ion-content>
+    <ion-item>
+      <ion-input placeholder="Ajouter un commentaire" [(ngModel)]="commentContent" color="none"></ion-input>
+      <ion-button fill="clear" (click)="sendComment()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ng-template>
+</ion-modal>

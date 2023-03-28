@@ -1,0 +1,19 @@
+#commentBtn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    --background: black;
+    border-top: 1px solid grey;
+}
+
+#comment {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+ion-item {
+    --ion-item-background: transparent;
+    display: flex;
+    width: 90%;
+}

@@ -2,6 +2,24 @@
     padding: 0%;
 }
 
+.ressourceCardHorizontal {
+    display: flex;
+    flex-direction: column;
+    padding: 0%;
+    height: 70%;
+}
+
+.ressourceCardHorizontalImage {
+    object-fit: cover;
+    height: 50%;
+}
+
+
+.ressourceCardHorizontalHeader {
+    height: 70%;
+}
+
+
 .ion-padding {
     width: 90%;
 }
@@ -9,4 +27,14 @@
 swiper-container {
     flex-direction: row;
     width: 100%;
+    height: 30%;
+}
+
+ion-card-title {
+    font-size: 4vw;
+    margin-bottom: 3%;
+}
+
+ion-card-subtitle {
+    font-size: 3vw;
 }

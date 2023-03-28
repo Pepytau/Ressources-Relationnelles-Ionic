@@ -8,13 +8,17 @@ import { RessourceDetailsPageRoutingModule } from './ressource-details-routing.m
 
 import { RessourceDetailsPage } from './ressource-details.page';
 
+import { CommentsComponentModule } from '../comments/comments.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RessourceDetailsPageRoutingModule
+    RessourceDetailsPageRoutingModule,
+    CommentsComponentModule
   ],
   declarations: [RessourceDetailsPage]
 })
-export class RessourceDetailsPageModule {}
+export class RessourceDetailsPageModule { }
