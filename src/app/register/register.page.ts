@@ -32,7 +32,6 @@ export class RegisterPage implements OnInit {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(password, salt);
 
-
     formData.append('mail', myLogin.mail);
     formData.append('alias', myLogin.alias);
     formData.append('firstName', myLogin.firstName);
@@ -43,8 +42,7 @@ export class RegisterPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post("http://ezraspberryapi.ddns.net/api/v1/Register", formData, httpOptions).subscribe((response: any) => {
-      console.log(response);
+    this.http.post("http://192.168.1.72/api/v1/Register", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           this.router.navigate(['/login']);

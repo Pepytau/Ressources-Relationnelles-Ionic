@@ -51,10 +51,25 @@ export class LoginPage implements OnInit {
                 mail: response.mail,
                 alias: response.alias,
                 firstName: response.firstName,
-                lastName: response.lastName
+                lastName: response.lastName,
+                id_role: response.id_role
               }
-              this.storage.set('user', user);
-              this.router.navigate(['/tabs/menu']);
+
+              switch (user.id_role) {
+                case '1':
+                  this.storage.set('user', user);
+                  this.router.navigate(['/tabs/menu']);
+                  break;
+                case '4':
+                  this.storage.set('user', user);
+                  this.router.navigate(['/super-admin']);
+                  break;
+                default:
+                  console.log(typeof (user.id_role));
+              }
+
+
+
             });
           } else {
             alert("Mot de passe incorrect");

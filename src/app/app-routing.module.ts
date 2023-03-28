@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'ressource-details',
     loadChildren: () => import('./ressource-details/ressource-details.module').then(m => m.RessourceDetailsPageModule)
+  },  {
+    path: 'super-admin',
+    loadChildren: () => import('./super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
   }
+
 ];
 @NgModule({
   imports: [
