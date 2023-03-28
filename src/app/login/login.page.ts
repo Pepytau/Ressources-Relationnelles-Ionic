@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import * as bcrypt from 'bcryptjs';
 //TODO login bcrypt
 //https://www.npmjs.com/package/bcryptjs
 
@@ -32,33 +33,38 @@ export class LoginPage implements OnInit {
     let formData: FormData = new FormData();
     let myLogin: any = this.loginForm.value;
     formData.append('login', myLogin.mail);
-    formData.append('password', myLogin.password);
+    //formData.append('password', myLogin.password);
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
       })
     }
-    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
-      switch (response[0].code) {
+    this.http.post("http://192.168.1.72/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
+      switch (response.code) {
         case '0001':
-          let user = {
-            mail: response[0].mail,
-            alias: response[0].alias,
-            firstName: response[0].firstName,
-            lastName: response[0].lastName
+          let pwd = response.password;
+
+          if (bcrypt.compareSync(myLogin.password, pwd)) {
+            this.http.get("http://192.168.1.72/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
+
+              let user = {
+                mail: response.mail,
+                alias: response.alias,
+                firstName: response.firstName,
+                lastName: response.lastName
+              }
+              this.storage.set('user', user);
+              this.router.navigate(['/tabs/menu']);
+            });
+          } else {
+            alert("Mot de passe incorrect");
           }
-          this.storage.set('user', user);
-          this.router.navigate(['/tabs/menu']);
           break;
-        case '0002':
-          alert('Mot de passe incorrect.');
+        case '0099':
+          alert(response.message);
           break;
-        case '0003':
-          alert('Aucun utilisateur n\'est enregistré avec cet e-mail.');
-          break;
-        case '0005':
-          alert('Une erreur s\'est produite, veuillez réessayer plus tard.');
-          break;
+        default:
+          alert("Wow wtf ?");
       }
     })
   }
