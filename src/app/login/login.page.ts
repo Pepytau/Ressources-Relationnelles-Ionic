@@ -39,13 +39,12 @@ export class LoginPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post("http://ezraspberryapi.ddns.net/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
+    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           let pwd = response.password;
-
           if (bcrypt.compareSync(myLogin.password, pwd)) {
-            this.http.get("http://ezraspberryapi.ddns.net/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
+            this.http.get("https://ezraspberryapi.ddns.net/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
 
               let user = {
                 mail: response.mail,
@@ -54,7 +53,6 @@ export class LoginPage implements OnInit {
                 lastName: response.lastName,
                 id_role: response.id_role
               }
-
               switch (user.id_role) {
                 case '1':
                   this.storage.set('user', user);
@@ -81,6 +79,6 @@ export class LoginPage implements OnInit {
         default:
           alert("Wow wtf ?");
       }
-    })
+    }, (error) => alert("Erreur de communication avec le serveur"))
   }
 }
