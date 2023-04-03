@@ -1,12 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>create</ion-title>
+    <ion-title>Créer une nouvelle ressource</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div id="container">
-    <h1>Créer une nouvelle ressource</h1>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label for="title" position="floating">Titre</ion-label>
@@ -23,14 +22,11 @@
           <ion-select-option value="Cours">Cours</ion-select-option>
           <ion-select-option value="Jeu en ligne">Jeu en ligne</ion-select-option>
           <ion-select-option value="Fiche lecture">Fiche lecture</ion-select-option>
-
           <ion-select-option value="course">Cours</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label for="content" position="floating">Contenu</ion-label>
-        <ion-input type="text" placeholder="Mon contenu" formControlName="content"></ion-input>
-      </ion-item>
+      <h4>Contenu</h4>
+      <quill-editor></quill-editor>
       <ion-item>
         <ion-label for="image" position="floating">Image</ion-label>
         <ion-input type="text" formControlName="image"></ion-input>

@@ -42,7 +42,7 @@ export class RegisterPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post("http://ezraspberryapi.ddns.net/api/v1/Register", formData, httpOptions).subscribe((response: any) => {
+    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Register", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           this.router.navigate(['/login']);
