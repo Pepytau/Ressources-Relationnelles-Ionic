@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreatePageRoutingModule } from './create-routing.module';
 
 import { CreatePage } from './create.page';
+
 import { QuillModule } from 'ngx-quill';
 
 @NgModule({
@@ -17,7 +18,7 @@ import { QuillModule } from 'ngx-quill';
     IonicModule,
     CreatePageRoutingModule,
     ReactiveFormsModule,
-    QuillModule.forRoot()
+    QuillModule
   ],
   declarations: [CreatePage]
 })

@@ -26,7 +26,7 @@
         </ion-select>
       </ion-item>
       <h4>Contenu</h4>
-      <quill-editor></quill-editor>
+      <quill-editor (onContentChanged)="onEditorChange()" formControlName="content"></quill-editor>
       <ion-item>
         <ion-label for="image" position="floating">Image</ion-label>
         <ion-input type="text" formControlName="image"></ion-input>

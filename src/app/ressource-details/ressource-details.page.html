@@ -12,7 +12,7 @@
 
 <ion-content>
   <div id="container">
-    <p id="content">{{ ressource['contenu'] }}</p>
+    <div [innerHtml]="ressource.contenu"></div>
   </div>
   <app-comments />
 </ion-content>
