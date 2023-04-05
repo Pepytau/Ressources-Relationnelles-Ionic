@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage-angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { error } from 'console';
 
 @Component({
   selector: 'app-create',
@@ -47,6 +48,7 @@ export class CreatePage implements OnInit {
         })
       }
       this.http.post("https://ezraspberryapi.ddns.net/api/v1/createRessource", formData, httpOptions).subscribe(async (response: any) => {
+        console.log(response)
         if (response.code == "0001") {
           const alert = await this.alertController.create({
             header: 'Succès !',
@@ -57,11 +59,16 @@ export class CreatePage implements OnInit {
           await alert.present();
           this.router.navigate(['/tabs/menu'])
         }
-      })
+      }, error => (console.log(error)))
     });
   }
 
   typeChange($event: any) {
     this.createForm.controls['type'].setValue($event.detail.value);
+  }
+
+  onEditorChange() {
+    let myRessource: any = this.createForm.value;
+    console.log(myRessource.content)
   }
 }

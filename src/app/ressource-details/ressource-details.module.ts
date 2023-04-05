@@ -10,6 +10,7 @@ import { RessourceDetailsPage } from './ressource-details.page';
 
 import { CommentsComponentModule } from '../comments/comments.module';
 
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { CommentsComponentModule } from '../comments/comments.module';
     FormsModule,
     IonicModule,
     RessourceDetailsPageRoutingModule,
-    CommentsComponentModule
+    CommentsComponentModule,
+    QuillModule
   ],
   declarations: [RessourceDetailsPage]
 })
