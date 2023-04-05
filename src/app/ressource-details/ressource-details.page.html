@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ressourceDetails</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" text=""></ion-back-button>
+    </ion-buttons>
+    <p id="headerTitle">{{ ressource['titre'] }}</p>
+    <p class="headerText">{{ ressource['type'] }}</p>
+    <p class="headerText" style="margin-bottom: 2%;">Créé par {{ ressource['createur'] }} le {{
+      ressource['dateCreation'] }}</p>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>{{ ressource['titre'] }}</h1>
-  <h2>{{ ressource['type'] }}</h2>
-  <h2>Créé par {{ ressource['createur'] }} le {{ ressource['dateCreation'] }}</h2>
-  <p>{{ ressource['contenu'] }}</p>
+  <div id="container">
+    <div [innerHtml]="ressource.contenu"></div>
+  </div>
   <app-comments />
 </ion-content>

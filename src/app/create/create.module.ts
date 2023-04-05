@@ -9,13 +9,16 @@ import { CreatePageRoutingModule } from './create-routing.module';
 
 import { CreatePage } from './create.page';
 
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     CreatePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuillModule
   ],
   declarations: [CreatePage]
 })
