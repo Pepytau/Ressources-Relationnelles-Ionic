@@ -27,6 +27,11 @@
 
 @import "~quill/dist/quill.snow.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Raleway&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
 
 h1 {
     font-size: 20pt;

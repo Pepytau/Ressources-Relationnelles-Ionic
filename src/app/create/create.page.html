@@ -27,10 +27,7 @@
       </ion-item>
       <h4>Contenu</h4>
       <quill-editor (onContentChanged)="onEditorChange()" formControlName="content"></quill-editor>
-      <ion-item>
-        <ion-label for="image" position="floating">Image</ion-label>
-        <ion-input type="text" formControlName="image"></ion-input>
-      </ion-item>
+      <ion-button (click)="imagePick()">Choisir une image d'illustration</ion-button>
       <ion-button shape="round" type="submit">Créer ma ressource</ion-button>
     </form>
   </div>

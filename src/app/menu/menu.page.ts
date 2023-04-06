@@ -22,19 +22,15 @@ export class MenuPage implements OnInit {
   ressources = [];
 
   async ngOnInit() {
-    await this.storage.get('user').then((myUser) => {
-      // if (myUser == null) {
-      //   this.router.navigate(['/login']);
-      // }
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
-        this.ressources = response;
-      });
-    });
   }
 
   async ionViewDidEnter() {
     await this.storage.get('user').then((myUser) => {
       this.user = myUser;
+      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
+        this.ressources = response;
+        console.log(this.ressources)
+      });
     });
   }
 

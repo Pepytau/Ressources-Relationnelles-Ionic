@@ -4,8 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage-angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { error } from 'console';
-
+import { Camera } from '@capacitor/camera';
 @Component({
   selector: 'app-create',
   templateUrl: './create.page.html',
@@ -41,6 +40,7 @@ export class CreatePage implements OnInit {
       formData.append('type', myRessource.type);
       formData.append('content', myRessource.content);
       formData.append('imagePath', myRessource.image);
+      console.log(myRessource.image);
       formData.append('creator', this.user.alias);
       const httpOptions = {
         headers: new HttpHeaders({
@@ -71,4 +71,27 @@ export class CreatePage implements OnInit {
     let myRessource: any = this.createForm.value;
     console.log(myRessource.content)
   }
+
+  async imagePick() {
+    const image = await Camera.pickImages({
+      quality: 50,
+      limit: 1
+    });
+    const response = await fetch(image.photos[0].webPath)
+    console.log(image.photos[0].webPath)
+    const blob = await response.blob();
+    console.log(blob)
+    this.createForm.value.image = await this.convertBlobToBase64(blob) as string;
+  }
+
+  private convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.readAsDataURL(blob);
+  });
+
+
 }
