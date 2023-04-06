@@ -76,7 +76,7 @@ export class CreatePage implements OnInit {
     const image = await Camera.pickImages({
       quality: 50,
       limit: 1
-    });
+    })
     const response = await fetch(image.photos[0].webPath)
     console.log(image.photos[0].webPath)
     const blob = await response.blob();
