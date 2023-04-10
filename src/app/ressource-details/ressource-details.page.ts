@@ -27,7 +27,6 @@ export class RessourceDetailsPage implements OnInit {
       params.delete('id');
       params = new HttpParams().set('ressourceId', this.ressource.id);
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
-        console.log(comments);
       })
     })
   }

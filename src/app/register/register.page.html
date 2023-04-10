@@ -5,30 +5,40 @@
 </ion-header>
 
 <ion-content>
-<div id="container">
-  <h1>S'enregistrer</h1>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label for="mail" position="floating">Courriel</ion-label>
-      <ion-input type="email" placeholder="email@exemple.fr" formControlName="mail"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="alias" position="floating">Pseudo</ion-label>
-      <ion-input type="text" placeholder="Michel008" formControlName="alias"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="lastName" position="floating">Nom</ion-label>
-      <ion-input type="text" placeholder="Dupont" formControlName="lastName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="firstName" position="floating">Prénom</ion-label>
-      <ion-input type="text" placeholder="Jean" formControlName="firstName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="password" position="floating">Mot de passe</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-    <ion-button shape="round" type="submit">Créer mon compte</ion-button>
-  </form>
-</div>
+  <div id="container">
+    <h1>S'enregistrer</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label for="mail" position="floating">Courriel</ion-label>
+        <ion-input type="email" placeholder="email@exemple.fr" formControlName="mail"></ion-input>
+        <span slot="error" *ngIf="mailRequired && (this.registerForm.value.mail == '')">Le courriel est
+          obligatoire</span>
+      </ion-item>
+      <ion-item>
+        <ion-label for="alias" position="floating">Pseudo</ion-label>
+        <ion-input type="text" placeholder="Michel008" formControlName="alias"></ion-input>
+        <span slot="error" *ngIf="aliasRequired && (this.registerForm.value.alias == '')">Le pseudo est
+          obligatoire</span>
+      </ion-item>
+      <ion-item>
+        <ion-label for="lastName" position="floating">Nom</ion-label>
+        <ion-input type="text" placeholder="Dupont" formControlName="lastName"></ion-input>
+        <span slot="error" *ngIf="lastNameRequired && (this.registerForm.value.lastName == '')">Le nom est
+          obligatoire</span>
+      </ion-item>
+      <ion-item>
+        <ion-label for="firstName" position="floating">Prénom</ion-label>
+        <ion-input type="text" placeholder="Jean" formControlName="firstName"></ion-input>
+        <span slot="error" *ngIf="firstNameRequired && (this.registerForm.value.firstName == '')">Le prénom est
+          obligatoire</span>
+      </ion-item>
+      <ion-item>
+        <ion-label for="password" position="floating">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+        <span slot="error" *ngIf="passwordRequired && (this.registerForm.value.password == '')">Le mot de passe est
+          obligatoire</span>
+      </ion-item>
+      <ion-button shape="round" type="submit">Créer mon compte</ion-button>
+    </form>
+  </div>
 </ion-content>

@@ -29,7 +29,6 @@ export class MenuPage implements OnInit {
       this.user = myUser;
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
         this.ressources = response;
-        console.log(this.ressources)
       });
     });
   }
