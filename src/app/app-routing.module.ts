@@ -28,6 +28,10 @@ const routes: Routes = [
   },  {
     path: 'super-admin',
     loadChildren: () => import('./super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
+  },
+  {
+    path: 'param',
+    loadChildren: () => import('./param/param.module').then( m => m.ParamPageModule)
   }
 
 ];
