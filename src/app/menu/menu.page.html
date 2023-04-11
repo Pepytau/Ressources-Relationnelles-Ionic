@@ -8,12 +8,13 @@
   <div id="container">
     <h1>Bonjour {{ user.alias }}</h1>
     <h2>Vos ressources recommandées</h2>
-    <swiper-container>
+    <swiper-container pagination="true" pagination-dynamic-bullets="true" [breakpoints]="breakpoints">
       <swiper-slide *ngFor="let ressource of ressources">
         <ion-card class="ressourceCardHorizontal" (click)="getRessourceDetail(ressource)">
-          <img *ngIf="ressource['imgPath'] != false" alt="Image d'illustration de la ressource"
-            src="{{ ressource['imgPath'] }}" />
-          <img *ngIf="ressource['imgPath'] == false" alt="Image d'illustration de la ressource par défaut"
+          <img class="ressourceCardHorizontalImage" *ngIf="ressource['imgPath'] != false"
+            alt="Image d'illustration de la ressource" src="{{ ressource['imgPath'] }}" />
+          <img class="ressourceCardHorizontalImage" *ngIf="ressource['imgPath'] == false"
+            alt="Image d'illustration de la ressource par défaut"
             src="https://ionicframework.com/docs/img/demos/card-media.png" />
           <ion-card-header class="ressourceCardHorizontalHeader">
             <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
@@ -25,9 +26,10 @@
     <h2>Vos ressources suivies</h2>
     <ion-content class="ion-padding">
       <ion-card *ngFor="let ressource of ressources" class="ressourceCard" (click)="getRessourceDetail(ressource)">
-        <img *ngIf="ressource['imgPath'] != false" alt="Image d'illustration de la ressource"
-          src="{{ ressource['imgPath'] }}" />
-        <img *ngIf="ressource['imgPath'] == false" alt="Image d'illustration de la ressource par défaut"
+        <img class="ressourceCardVerticalImage" *ngIf="ressource['imgPath'] != false"
+          alt="Image d'illustration de la ressource" src="{{ ressource['imgPath'] }}" />
+        <img class="ressourceCardVerticalImage" *ngIf="ressource['imgPath'] == false"
+          alt="Image d'illustration de la ressource par défaut"
           src="https://ionicframework.com/docs/img/demos/card-media.png" />
         <ion-card-header>
           <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
