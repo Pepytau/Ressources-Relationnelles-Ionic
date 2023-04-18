@@ -29,7 +29,6 @@ export class CommentsComponent implements OnInit {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
     if (isOpen = true) {
-      console.log(this.parent.ressource);
       let params = new HttpParams().set('ressourceId', this.parent.ressource.id);
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((response: any) => {
         this.comments = response;
@@ -49,7 +48,6 @@ export class CommentsComponent implements OnInit {
         })
       }
       this.http.post("https://ezraspberryapi.ddns.net/api/v1/createComment", formData, httpOptions).subscribe(async (response: any) => {
-        console.log(response)
         if (response.code == "0001") {
           const alert = await this.alertController.create({
             header: 'Succès !',

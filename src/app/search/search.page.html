@@ -10,7 +10,10 @@
       (ionChange)="search($event)"></ion-searchbar>
     <ion-content class="ion-padding">
       <ion-card *ngFor="let ressource of ressources" class="ressourceCard" (click)="getRessourceDetail(ressource)">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <img *ngIf="ressource['imgPath'] != false" alt="Image d'illustration de la ressource"
+          src="{{ ressource['imgPath'] }}" />
+        <img *ngIf="ressource['imgPath'] == false" alt="Image d'illustration de la ressource par défaut"
+          src="https://ionicframework.com/docs/img/demos/card-media.png" />
         <ion-card-header>
           <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
           <ion-card-subtitle>{{ ressource['type'] }}</ion-card-subtitle>

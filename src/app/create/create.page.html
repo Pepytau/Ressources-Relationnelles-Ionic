@@ -10,6 +10,7 @@
       <ion-item>
         <ion-label for="title" position="floating">Titre</ion-label>
         <ion-input type="text" placeholder="Ma nouvelle ressource" formControlName="title"></ion-input>
+        <span slot="error" *ngIf="titleRequired && (this.createForm.value.title == '')">Le titre est obligatoire</span>
       </ion-item>
       <ion-item>
         <ion-label for="type" position="floating">Type</ion-label>
@@ -24,13 +25,14 @@
           <ion-select-option value="Fiche lecture">Fiche lecture</ion-select-option>
           <ion-select-option value="course">Cours</ion-select-option>
         </ion-select>
+        <span class="inputError" *ngIf="typeRequired && (this.createForm.value.type == '')">Le type est
+          obligatoire</span>
       </ion-item>
       <h4>Contenu</h4>
-      <quill-editor (onContentChanged)="onEditorChange()" formControlName="content"></quill-editor>
-      <ion-item>
-        <ion-label for="image" position="floating">Image</ion-label>
-        <ion-input type="text" formControlName="image"></ion-input>
-      </ion-item>
+      <quill-editor formControlName="content"></quill-editor>
+      <span class="inputError" *ngIf="contentRequired && (this.createForm.value.content == '')">Le contenu est
+        obligatoire</span>
+      <ion-button (click)="imagePick()">Choisir une image d'illustration</ion-button>
       <ion-button shape="round" type="submit">Créer ma ressource</ion-button>
     </form>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -27,7 +27,6 @@ export class RessourceDetailsPage implements OnInit {
       params.delete('id');
       params = new HttpParams().set('ressourceId', this.ressource.id);
       this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
-        console.log(comments);
       })
     })
   }
