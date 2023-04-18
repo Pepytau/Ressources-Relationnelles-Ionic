@@ -62,4 +62,28 @@
         font-size: 1vw;
         margin-bottom: 1%;
     }
+
+    .ion-padding {
+        --offset-bottom: auto !important;
+        --overflow: hidden;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .ressourceCard {
+        width: 70vw;
+        height: 40vh;
+    }
+
+    .ressourceCardVerticalImage {
+        object-fit: cover;
+        height: 30vh;
+    }
 }
