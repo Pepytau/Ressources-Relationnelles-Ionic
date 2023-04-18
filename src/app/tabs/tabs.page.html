@@ -18,7 +18,7 @@
 
 </ion-tabs>
 
-<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+<ion-fab *ngIf="!keyboardUp" vertical="bottom" horizontal="center" slot="fixed">
   <ion-fab-button redo="menu" [routerLink]="['/tabs/create']">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>

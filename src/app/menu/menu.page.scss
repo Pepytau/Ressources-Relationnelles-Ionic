@@ -1,40 +1,89 @@
-.ressourceCard {
-    padding: 0%;
+/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:320px) {
+    .ressourceCard {
+        padding: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ressourceCardHorizontal {
+        display: flex;
+        flex-direction: column;
+        padding: 0%;
+        margin-top: 2%;
+        height: 80%;
+    }
+
+    .ressourceCardHorizontalImage {
+        object-fit: cover;
+        height: 13vh;
+    }
+
+    .ressourceCardVerticalImage {
+        object-fit: cover;
+        height: 16vh;
+    }
+
+    .ion-padding {
+        width: 90%;
+    }
+
+    swiper-container {
+        flex-direction: row;
+        width: 100%;
+        height: 30%;
+    }
+
+    ion-card-title {
+        font-size: 4vw;
+        margin-bottom: 3%;
+    }
+
+    ion-card-subtitle {
+        font-size: 3vw;
+    }
 }
 
-.ressourceCardHorizontal {
-    display: flex;
-    flex-direction: column;
-    padding: 0%;
-    height: 70%;
-}
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media (min-width:481px) {}
 
-.ressourceCardHorizontalImage {
-    object-fit: cover;
-    height: 50%;
-}
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media (min-width:641px) {}
 
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:961px) {}
 
-.ressourceCardHorizontalHeader {
-    height: 70%;
-}
+/* big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) {}
 
+/* hi-res laptops and desktops */
+@media (min-width:1281px) {
+    ion-card-title {
+        font-size: 1vw;
+        margin-bottom: 1%;
+    }
 
-.ion-padding {
-    width: 90%;
-}
+    .ion-padding {
+        --offset-bottom: auto !important;
+        --overflow: hidden;
+        overflow: auto;
 
-swiper-container {
-    flex-direction: row;
-    width: 100%;
-    height: 30%;
-}
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
-ion-card-title {
-    font-size: 4vw;
-    margin-bottom: 3%;
-}
+        display: flex;
+        align-items: center;
+        justify-items: center;
+    }
 
-ion-card-subtitle {
-    font-size: 3vw;
+    .ressourceCard {
+        width: 70vw;
+        height: 40vh;
+    }
+
+    .ressourceCardVerticalImage {
+        object-fit: cover;
+        height: 30vh;
+    }
 }
