@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Camera } from '@capacitor/camera';
+import { baseUrl } from '../constants';
 @Component({
   selector: 'app-create',
   templateUrl: './create.page.html',
@@ -51,7 +52,7 @@ export class CreatePage implements OnInit {
             'Accept': 'application/json',
           })
         }
-        this.http.post("https://ezraspberryapi.ddns.net/api/v1/createRessource", formData, httpOptions).subscribe(async (response: any) => {
+        this.http.post(baseUrl + "/createRessource", formData, httpOptions).subscribe(async (response: any) => {
           if (response.code == "0001") {
             const alert = await this.alertController.create({
               header: 'Succès !',

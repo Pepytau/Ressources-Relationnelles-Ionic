@@ -1,0 +1,1 @@
+export const baseUrl = "https://api.ezraspberry.com/api/v1";

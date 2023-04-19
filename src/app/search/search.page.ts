@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { baseUrl } from '../constants';
 
 @Component({
   selector: 'app-search',
@@ -19,7 +20,7 @@ export class SearchPage implements OnInit {
   search(searchText: any) {
     if (searchText.detail.value != "") {
       let params = new HttpParams().set('search', searchText.detail.value);
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/searchRessource",
+      this.http.get(baseUrl + "/searchRessource",
         { params: params }).subscribe((response: any) => {
           console.log(response)
           this.ressources = response;

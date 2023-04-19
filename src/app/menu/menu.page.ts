@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { baseUrl } from '../constants';
 
 @Component({
   selector: 'app-menu',
@@ -45,7 +46,7 @@ export class MenuPage implements OnInit {
   async ionViewDidEnter() {
     await this.storage.get('user').then((myUser) => {
       this.user = myUser;
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
+      this.http.get(baseUrl + "/getRessourcesHeaders").subscribe((response: any) => {
         this.ressources = response;
       });
     });
