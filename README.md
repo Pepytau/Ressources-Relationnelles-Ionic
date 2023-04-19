@@ -10,9 +10,17 @@ L'application fonctionne de pair avec une API permettant de fonctionner à dista
 </br>
 ![image](https://user-images.githubusercontent.com/74646439/233069227-f515e428-ba00-4d97-b6c4-9cc8d11f2eb6.png)
 
-L'application est accessible via navigateur Web ou par application mobile.  
+L'application est accessible via navigateur Web ou par application mobile Android et IOS.  
 
 ## Documentation FRONTEND
+
+Technologie utilisée : IONIC ANGULAR CAPACITOR
+![image](https://user-images.githubusercontent.com/74646439/233075149-bf8009bd-1e82-4e0e-8329-08e42a1de797.png)  
+
+Modules externes utilisés dans l'application : 
+  - Carousels : https://swiperjs.com/  
+  - WYSIWYG : https://quilljs.com/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/KillerCodeMonkey/ngx-quill-ionic  
+  - Cryptage : https://www.npmjs.com/package/bcryptjs  
 
 Page de bienvenue :  
 ![image](https://user-images.githubusercontent.com/74646439/233072856-7be71c2d-2153-4bb7-bdff-857c36410c3c.png)  
