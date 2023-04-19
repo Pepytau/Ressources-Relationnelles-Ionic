@@ -21,12 +21,12 @@ export class RessourceDetailsPage implements OnInit {
         id = id.params.id
       });
     let params = new HttpParams().set('id', id);
-    this.http.get("https://ezraspberryapi.ddns.net/api/v1/Ressource", { params: params }).subscribe((response: any) => {
+    this.http.get("https://api.ezraspberry.com/api/v1/Ressource", { params: params }).subscribe((response: any) => {
       this.ressource = response;
       this.ressource.contenu = this.sanitizer.bypassSecurityTrustHtml(this.ressource.contenu)
       params.delete('id');
       params = new HttpParams().set('ressourceId', this.ressource.id);
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
+      this.http.get("https://api.ezraspberry.com/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
       })
     })
   }

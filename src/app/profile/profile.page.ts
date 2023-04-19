@@ -15,7 +15,8 @@ export class ProfilePage implements OnInit {
     mail: '',
     firstName: '',
     lastName: '',
-    alias: ''
+    alias: '',
+    profile_picture: '',
   }
 
   constructor(private storage: Storage, private router: Router, private http: HttpClient,) { }
@@ -23,6 +24,7 @@ export class ProfilePage implements OnInit {
   async ngOnInit() {
     await this.storage.get('user').then((myUser) => {
       this.user = myUser;
+      alert(this.user.profile_picture);
     });
   }
 

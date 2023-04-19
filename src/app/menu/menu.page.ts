@@ -45,7 +45,7 @@ export class MenuPage implements OnInit {
   async ionViewDidEnter() {
     await this.storage.get('user').then((myUser) => {
       this.user = myUser;
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourcesHeaders").subscribe((response: any) => {
+      this.http.get("https://api.ezraspberry.com/api/v1/getRessourcesHeaders").subscribe((response: any) => {
         this.ressources = response;
       });
     });

@@ -24,6 +24,7 @@ import { QuillModule } from 'ngx-quill';
     QuillModule.forRoot({
       placeholder: 'Commencer à écrire...',
       format: 'html',
+
     })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

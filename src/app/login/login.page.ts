@@ -39,19 +39,20 @@ export class LoginPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post("https://ezraspberryapi.ddns.net/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
+    this.http.post("https://api.ezraspberry.com/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           let pwd = response.password;
           if (bcrypt.compareSync(myLogin.password, pwd)) {
-            this.http.get("https://ezraspberryapi.ddns.net/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
+            this.http.get("https://api.ezraspberry.com/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
 
               let user = {
                 mail: response.mail,
                 alias: response.alias,
                 firstName: response.firstName,
                 lastName: response.lastName,
-                id_role: response.id_role
+                id_role: response.id_role,
+                profile_picture: response.profile_picture_path
               }
               switch (user.id_role) {
                 case '1':
