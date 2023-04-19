@@ -23,6 +23,10 @@ Modules externes utilisés dans l'application :
   - WYSIWYG : https://quilljs.com/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/KillerCodeMonkey/ngx-quill-ionic  
   - Cryptage : https://www.npmjs.com/package/bcryptjs  
 
+L'application s'organise autour de cette architecture de pages :  
+![image](https://user-images.githubusercontent.com/74646439/233192134-50161de9-ff82-42d0-bf49-3f091a88dd95.png)  
+
+
 Page de bienvenue :  
 ![image](https://user-images.githubusercontent.com/74646439/233072856-7be71c2d-2153-4bb7-bdff-857c36410c3c.png)  
 
