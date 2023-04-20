@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post(baseUrl + "Login", formData, httpOptions).subscribe((response: any) => {
+    this.http.post(baseUrl + "/Login", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           let pwd = response.password;
