@@ -27,7 +27,7 @@ export class RessourceDetailsPage implements OnInit {
       this.ressource.contenu = this.sanitizer.bypassSecurityTrustHtml(this.ressource.contenu)
       params.delete('id');
       params = new HttpParams().set('ressourceId', this.ressource.id);
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
+      this.http.get("https://api.ezraspberry.com/api/v1/getRessourceComments", { params: params }).subscribe((comments: any) => {
       })
     })
   }

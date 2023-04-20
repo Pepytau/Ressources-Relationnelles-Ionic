@@ -1,3 +1,46 @@
-.ressourceCard {
-    padding: 0;
+.cards-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+@media (min-width:320px) {
+    
+    .cards-container{
+    flex-direction: column;
+    }
+
+    .ressource-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 256px;
+    }
+    
+    .ressource-card img{
+        width: 256px;
+        height: 256px;
+        object-fit: cover;
+    }
+    
+    .ressource-card ion-card-header{
+       // padding: 0;
+    }
+    
+    .ressource-card ion-card-title{
+        white-space: nowrap;
+        width: 256px;
+        overflow: hidden;
+        font-size: 1.3em;
+    }
+    @media (min-width:641px) {
+    .cards-container{
+        flex-direction: row;
+    }
+    }
+    
+    @media (min-width:1025px) {
+
+    }
+ }

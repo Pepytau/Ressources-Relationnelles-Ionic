@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
+  <div class="container">
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label for="title" position="floating">Titre</ion-label>
@@ -29,11 +29,13 @@
           obligatoire</span>
       </ion-item>
       <h4>Contenu</h4>
-      <quill-editor formControlName="content"></quill-editor>
-      <span class="inputError" *ngIf="contentRequired && (this.createForm.value.content == '')">Le contenu est
-        obligatoire</span>
-      <ion-button (click)="imagePick()">Choisir une image d'illustration</ion-button>
-      <ion-button shape="round" type="submit">Créer ma ressource</ion-button>
+      <div>
+        <quill-editor formControlName="content"></quill-editor>
+          <span class="inputError" *ngIf="contentRequired && (this.createForm.value.content == '')">Le contenu est
+          obligatoire</span>
+      </div>
+        <ion-button (click)="imagePick()">Choisir une image d'illustration</ion-button>
+        <ion-button shape="round" type="submit">Créer ma ressource</ion-button>
     </form>
   </div>
 </ion-content>

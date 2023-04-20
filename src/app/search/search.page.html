@@ -8,8 +8,8 @@
   <div id="container">
     <ion-searchbar animated="true" placeholder="Chercher" color="light" id="searchBar"
       (ionChange)="search($event)"></ion-searchbar>
-    <ion-content class="ion-padding">
-      <ion-card *ngFor="let ressource of ressources" class="ressourceCard" (click)="getRessourceDetail(ressource)">
+    <div class="cards-container">
+      <ion-card *ngFor="let ressource of ressources" class="ressource-card" (click)="getRessourceDetail(ressource)">
         <img *ngIf="ressource['imgPath'] != false" alt="Image d'illustration de la ressource"
           src="{{ ressource['imgPath'] }}" />
         <img *ngIf="ressource['imgPath'] == false" alt="Image d'illustration de la ressource par défaut"
@@ -19,6 +19,6 @@
           <ion-card-subtitle>{{ ressource['type'] }}</ion-card-subtitle>
         </ion-card-header>
       </ion-card>
-    </ion-content>
+    </div>
   </div>
 </ion-content>

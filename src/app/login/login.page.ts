@@ -46,13 +46,13 @@ export class LoginPage implements OnInit {
           let pwd = response.password;
           if (bcrypt.compareSync(myLogin.password, pwd)) {
             this.http.get(baseUrl + "/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
-
               let user = {
                 mail: response.mail,
                 alias: response.alias,
                 firstName: response.firstName,
                 lastName: response.lastName,
-                id_role: response.id_role
+                id_role: response.id_role,
+                profile_picture: response.profile_picture_path
               }
               switch (user.id_role) {
                 case '1':

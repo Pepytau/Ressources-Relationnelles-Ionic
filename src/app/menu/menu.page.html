@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
+  <div class="container">
     <h1>Bonjour {{ user.alias }}</h1>
     <h2>Vos ressources recommandées</h2>
     <swiper-container pagination="true" pagination-dynamic-bullets="true" [breakpoints]="breakpoints">
       <swiper-slide *ngFor="let ressource of ressources">
-        <ion-card class="ressourceCardHorizontal" (click)="getRessourceDetail(ressource)">
+        <ion-card class="caroussel-card" (click)="getRessourceDetail(ressource)">
           <img class="ressourceCardHorizontalImage" *ngIf="ressource['imgPath'] != false"
             alt="Image d'illustration de la ressource" src="{{ ressource['imgPath'] }}" />
           <img class="ressourceCardHorizontalImage" *ngIf="ressource['imgPath'] == false"
@@ -23,19 +23,12 @@
         </ion-card>
       </swiper-slide>
     </swiper-container>
-    <h2>Vos ressources suivies</h2>
-    <ion-content class="ion-padding">
-      <ion-card *ngFor="let ressource of ressources" class="ressourceCard" (click)="getRessourceDetail(ressource)">
-        <img class="ressourceCardVerticalImage" *ngIf="ressource['imgPath'] != false"
-          alt="Image d'illustration de la ressource" src="{{ ressource['imgPath'] }}" />
-        <img class="ressourceCardVerticalImage" *ngIf="ressource['imgPath'] == false"
-          alt="Image d'illustration de la ressource par défaut"
-          src="https://ionicframework.com/docs/img/demos/card-media.png" />
-        <ion-card-header>
-          <ion-card-title>{{ ressource['titre'] }}</ion-card-title>
-          <ion-card-subtitle>{{ ressource['type'] }}</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-content>
+    <!-- <div>
+      <h2>Vos ressources suivies</h2>
+    </div> -->
+  </div>
+  
+  <div class="container">
+    <h2>Vos ressources favorites <ion-icon name="star"></ion-icon></h2>
   </div>
 </ion-content>
