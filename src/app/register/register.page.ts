@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
+import { baseUrl } from '../constants';
 
 @Component({
   selector: 'app-register',
@@ -48,7 +49,7 @@ export class RegisterPage implements OnInit {
           'Accept': 'application/json',
         })
       }
-      this.http.post("https://api.ezraspberry.com/api/v1/Register", formData, httpOptions).subscribe((response: any) => {
+      this.http.post(baseUrl + "/Register", formData, httpOptions).subscribe((response: any) => {
         switch (response.code) {
           case '0001':
             this.router.navigate(['/login']);

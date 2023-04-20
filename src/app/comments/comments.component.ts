@@ -4,6 +4,7 @@ import { RessourceDetailsPage } from '../ressource-details/ressource-details.pag
 import { Storage } from '@ionic/storage-angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { baseUrl } from '../constants';
 
 @Component({
   selector: 'app-comments',
@@ -30,7 +31,7 @@ export class CommentsComponent implements OnInit {
     this.isModalOpen = isOpen;
     if (isOpen = true) {
       let params = new HttpParams().set('ressourceId', this.parent.ressource.id);
-      this.http.get("https://ezraspberryapi.ddns.net/api/v1/getRessourceComments", { params: params }).subscribe((response: any) => {
+      this.http.get(baseUrl + "/getRessourceComments", { params: params }).subscribe((response: any) => {
         this.comments = response;
       })
     }
@@ -47,7 +48,7 @@ export class CommentsComponent implements OnInit {
           'Accept': 'application/json',
         })
       }
-      this.http.post("https://ezraspberryapi.ddns.net/api/v1/createComment", formData, httpOptions).subscribe(async (response: any) => {
+      this.http.post(baseUrl + "/createComment", formData, httpOptions).subscribe(async (response: any) => {
         if (response.code == "0001") {
           const alert = await this.alertController.create({
             header: 'Succès !',
