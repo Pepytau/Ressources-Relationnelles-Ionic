@@ -20,7 +20,6 @@ export class ProfilePage implements OnInit {
   }
 
   constructor(private storage: Storage, private router: Router, private http: HttpClient,) { }
-
   async ngOnInit() {
     await this.storage.get('user').then((myUser) => {
       this.user = myUser;
