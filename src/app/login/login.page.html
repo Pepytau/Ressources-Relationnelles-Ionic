@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
+  <div class="container">
     <h1>Connexion</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <ion-item>
@@ -18,7 +18,9 @@
       </ion-item>
       <ion-button shape="round" type="submit">Se connecter</ion-button>
     </form>
-    <ion-button shape="round" [routerLink]="['/register']">S'enregistrer</ion-button>
-    <ion-button shape="round" [routerLink]="['/tabs']">Continuer en tant qu'invité</ion-button>
+    <div>
+      <ion-button shape="round" [routerLink]="['/register']">S'enregistrer</ion-button>
+      <ion-button shape="round" [routerLink]="['/tabs']">Continuer en tant qu'invité</ion-button>
+    </div>
   </div>
 </ion-content>
