@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { baseUrl } from '../constants';
 import * as bcrypt from 'bcryptjs';
 //TODO login bcrypt
 //https://www.npmjs.com/package/bcryptjs
@@ -39,13 +40,12 @@ export class LoginPage implements OnInit {
         'Accept': 'application/json',
       })
     }
-    this.http.post("https://api.ezraspberry.com/api/v1/Login", formData, httpOptions).subscribe((response: any) => {
+    this.http.post(baseUrl + "/Login", formData, httpOptions).subscribe((response: any) => {
       switch (response.code) {
         case '0001':
           let pwd = response.password;
           if (bcrypt.compareSync(myLogin.password, pwd)) {
-            this.http.get("https://api.ezraspberry.com/api/v1/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
-
+            this.http.get(baseUrl + "/User?mail=" + myLogin.mail, httpOptions).subscribe((response: any) => {
               let user = {
                 mail: response.mail,
                 alias: response.alias,

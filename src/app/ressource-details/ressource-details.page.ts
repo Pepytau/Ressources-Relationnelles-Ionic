@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { baseUrl } from '../constants';
 @Component({
   selector: 'app-ressource-details',
   templateUrl: './ressource-details.page.html',
@@ -21,7 +22,7 @@ export class RessourceDetailsPage implements OnInit {
         id = id.params.id
       });
     let params = new HttpParams().set('id', id);
-    this.http.get("https://api.ezraspberry.com/api/v1/Ressource", { params: params }).subscribe((response: any) => {
+    this.http.get(baseUrl + "/Ressource", { params: params }).subscribe((response: any) => {
       this.ressource = response;
       this.ressource.contenu = this.sanitizer.bypassSecurityTrustHtml(this.ressource.contenu)
       params.delete('id');
